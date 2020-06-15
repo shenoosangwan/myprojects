@@ -3,200 +3,110 @@
 <head>
     <meta charset = "UTF-8">
     <meta name    = "viewport" content = "width=device-width, initial-scale=1.0">
-    <title>TODO list</title>
-    <link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
-    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    
+    <link rel     = "stylesheet" href  = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "anonymous">
+    <title>Daily Routine</title>
+
     <style>
-        *{
-    margin    : 0;
-    padding   : 0;
-    box-sizing: border-box;
-}
-
-body{
-
-    width           : 90%;
-    background-image: url(https://wallpapersite.com/images/pages/pic_h/4172.jpg);
-    background-size : cover;
-    height          : 100vh;
-    display         : flex;
-    justify-content : center;
-    align-items     : center;
-    font-family     : Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.container{
-    margin          : 0 0 0 auto;
-    width           : 90%;
-    height          : 80%;
-    border          : none;
-    border-radius   : 40px;
-    box-shadow      : 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    display         : flex;
-    flex-direction  : column;
-    overflow        : hidden;
-    cursor          : auto;
-    background-image: url(https://i.pinimg.com/originals/d6/10/50/d610501d22ccb68439c1ccf8b550eb56.jpg);
-    background-size: cover;
-    transition      : .8s ease-in;
-}
-
-.container:hover{
-    background-image: url();
-    background-color: black;
-}
-
-
-.title{
-    width          : 100%;
-    font-weight    : 900;
-    font-size      : larger;
-    height         : 15%;
-    color          : #f7b71d;
-    font-family    : Verdana, Geneva, Tahoma, sans-serif;
-    display        : flex;
-    justify-content: center;
-    align-items    : center;
-}
-
-.addSection{
-    width  : 100%;
-    height : 10%;
-    opacity: 1;
-    
-}
-
-.taskInput{
-    margin       : 10px 10px 0px ;
-    padding      : 20px;
-    width        : 180px;
-    height       : 40px;
-    border-radius: 15px 0 0 15px;
-    border       : 1px solid #dbdbdb;
-    border-right : none;
-    outline      : none;
-    align-items  : center;
-}
-
-.add{
-    width           : 60px;
-    height          : 42px;
-    margin          : 15px auto 10px -20px;
-    background-color: #f7b71d;
-    color           : white;
-    border          : none;
-    border-radius   : 0 15px 15px 0;
-    outline         : none;
-    font-weight     : bold;
-    cursor          : pointer;
-    transition      : all .5s ease-in;
-}
-
-.add:hover{
-    background-color: indianred;
-}
-
-.list{
-    margin-top    : 7px;
-    width         : 100%;
-    height        : 60%;
-    padding       : 10px 10px 10px 10px;
-    overflow      : auto;
-    animation-name: ;
-}
-
-
-.taskContainer{
-    border-bottom  : 5px solid #dbdbdb;
-    background     : white;
-    padding        : 5px 0 5px 10px;
-    display        : flex;
-    justify-content: space-between;
-    align-items    : center;
-}
-
-
-
-.task{
-    width: 270px;
-}
-
-i.fas.fa-check, i.fas.fa-trash-alt{
-    opacity     : .9;
-    margin-right: 30px;
-    cursor      : pointer;
-    transition  : all 0.1s ease-in-out;
-}
-
-i.fas.fa-check:hover{
-    color: #0c9463;
-}
-
-i.fas.fa-trash-alt:hover{
-    color: #ff0000;
-}
-
-i.fas.fa-check:active{
-    transform: translateY(3px);
-}
-
-i.fas.fa-trash-alt:active{
-    transform: translateY(3px);
-}
-
-.taskContainer:hover i.fas.fa-check, .taskContaier:hover i.fas.fa-trash-alt{
-    opacity: 1;
-}
-
-    </style>
-</head>
-
-<body>
-    <div class = "container">
-    <div class = "title">
-            <h1>TODO APP</h1>
-    </div>
-        <div    class = "addSection">
-        <input  type  = "text" class = "taskInput" placeholder = "What are you planning">
-        <button class = "add">ADD</button>
-        </div>
-        <div class = "list"></div>
-    </div>
-    <script>
-        const addBtn    = document.querySelector(".add")
-        const taskField = document.querySelector(".taskInput")
-        const list      = document.querySelector(".list")
-
-addBtn.addEventListener("click", addTask)
-
-function addTask() {
-    if (taskField.value.length === 0){
-        return;
-    } 
-    
-    else {
-        const taskContainer           = list.appendChild(document.createElement("div"))
-        const task                    = taskContainer.appendChild(document.createElement("p"))
-        const doneBtn                 = taskContainer.appendChild(document.createElement("i"))
-        const deleteBtn               = taskContainer.appendChild(document.createElement("i"))
-              deleteBtn.className     = "fas fa-trash-alt"
-              doneBtn.className       = "fas fa-check"
-              taskContainer.className = "taskContainer"
-              task.className          = "task"
-              task.innerHTML          = taskField.value.charAt(0).toUpperCase() + taskField.value.slice(1)
-              taskField.value         = ""
-        deleteBtn.addEventListener("click", deleteTask)
-        doneBtn.addEventListener("click", checkTask)
-        function checkTask(e) {
-            e.target.previousSibling.style.textDecoration = "line-through"
+        body{
+            background-image: url(https://wallpapersite.com/images/pages/pic_h/4172.jpg);
+            background-size : cover;
         }
-        function deleteTask (e){
-            e.target.parentElement.remove()
+
+
+        .card{
+            background-color: black;
+        }
+        
+
+        .title{
+            color: white;
+        }
+
+        .btn{
+            background-color: sandybrown;
+        }
+    </style>
+
+
+</head>
+<body>
+    <header id    = "main-header" class = "bg-dark text-white p-4 mb-3">
+    <div    class = "container">
+    <div    class = "row">
+    <div    class = "col-md-6">
+    <h1     class = "header-title">Daily Routine</h1>
+                </div>
+                <div   class = "col-md-6 align-self-center">
+                <input type  = "text" class = "form-control" id = "filter" placeholder = "Search..." />
+                </div>
+            </div>
+        </div>
+    </header>
+    <div   class = "container">
+    <div   id    = "main" class    = "card card-body">
+    <div   class = "title">My Routine</div><br>
+    <form  id    = "addForm" class = "form-inline mb-3">
+    <input type  = "text" onfocus  = "this.value=''" class = "form-control mr-2" id = "item" />
+    <input type  = "submit" value  = "Submit" class        = "btn " />
+            </form>
+            <h2 class = "title">Routines</h2>
+            <ul id    = "items" class                                         = "list-group">
+            <li class = "list-group-item">Learn Web Development <button class = "btn btn-danger btn-md float-right delete">x</button></li>
+            <li class = "list-group-item">Practice react <button class        = "btn btn-danger btn-md float-right delete">x</button></li>
+            <li class = "list-group-item">Code <button class                  = "btn btn-danger btn-md float-right delete">x</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const form     = document.getElementById('addForm');
+        const itemList = document.getElementById('items');
+        const filter   = document.getElementById('filter');
+
+form.addEventListener('submit', addItem);
+itemList.addEventListener('click', removeItem);
+filter.addEventListener('keyup', filterItem);
+
+function addItem(e) {
+    e.preventDefault();
+
+    const newItem = document.getElementById('item').value;
+
+    const li           = document.createElement('li');
+          li.className = 'list-group-item';
+    li.appendChild(document.createTextNode(newItem));
+
+    const deleteBtn           = document.createElement('button');
+          deleteBtn.className = 'btn btn-danger btn-md float-right delete';
+    deleteBtn.appendChild(document.createTextNode('x'));
+
+    li.appendChild(deleteBtn);
+
+    itemList.appendChild(li);
+}
+
+function removeItem(e) {
+    if (e.target.classList.contains('delete')) {
+        if (confirm('Are you sure?')) {
+            let li = e.target.parentElement;
+            itemList.removeChild(li);
         }
     }
 }
-    </script>
 
+function filterItem(e) {
+    const text  = e.target.value.toLowerCase();
+    const items = itemList.getElementsByTagName('li');
+    Array.from(items).forEach((item) => {
+        let itemName = item.firstChild.textContent;
+        if (itemName.toLowerCase().indexOf(text) != -1) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+    </script>
 </body>
 </html>
